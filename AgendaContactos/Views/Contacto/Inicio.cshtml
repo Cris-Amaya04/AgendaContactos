@@ -1,0 +1,49 @@
+﻿@model List<AgendaContactos.Models.Contacto>
+
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Lista de Contactos</h4>
+            </div>
+            <div class="panel-body">
+                <a href="@Url.Action("Crear", "Contacto")" class="btn btn-success">Crear Nuevo</a>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Telefono</th>
+                                <th>Correo</th>
+                                <th style="width:150px"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(AgendaContactos.Models.Contacto item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Nombre</td>
+                                        <td>@item.Apellido</td>
+                                        <td>@item.Telefono</td>
+                                        <td>@item.Correo</td>
+                                        <td>
+                                            <a href="@Url.Action("Editar", "Contacto", new {idcontacto = item.IDContacto})" class="btn btn-primary btn-sm">Editar</a>
+                                            <a href="@Url.Action("Eliminar", "Contacto", new {idcontacto = item.IDContacto})" class="btn btn-danger btn-sm">Eliminar</a>
+                                        </td>
+                                    </tr>
+
+                                }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
